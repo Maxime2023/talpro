@@ -2,10 +2,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
+import logo from '../img/Logo.png'
+import acceuil from '../img/acceuil.png'
+import React from 'react'
+import { Button } from '@mui/material'
+import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -15,7 +21,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+      <img style={{width: "200px", height: "200px"}} src={logo.src}/>
+      <img style={{width: "400px", height: "300px"}} src={acceuil.src}/>
+      <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, backgroundColor: "#274c77" }} onClick={()=>router.push('/login')}> Connexion</Button>      
+      <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, backgroundColor: "#274c77" }} onClick={()=>router.push('/register')}> Inscription</Button>      
       </main>
+      
     </>
   )
 }

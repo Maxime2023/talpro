@@ -14,11 +14,6 @@ import {projects} from '../components/data';
 import { useRouter } from 'next/router';
 import { storeSelectedProject, selectProject } from '../components/Redux/Store';
 import { useSelector, useDispatch } from 'react-redux';
-import classes from "./classes.module.css";
-import { Button, TextField } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import TuneIcon from '@mui/icons-material/Tune';
-
 
 export default function Projects() {
   const theme = useTheme();
@@ -62,24 +57,6 @@ export default function Projects() {
 
   return (
     <div>
-    <h1 style={{ color:"#274c77"}}className={classes.titre}>Les projets</h1>
-    <Box sx={{width: '100%', display: 'flex', justifyContent: 'space-evenly', mb:2}}>
-    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-        <SearchIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-        <TextField id="input-with-sx" label="Mots Clés" variant="standard" />
-      </Box>
-    <IconButton sx={{color:"#FFF", backgroundColor:"#6096BA"}} aria-label="add to shopping cart">
-    <TuneIcon />
-    </IconButton>
-    </Box>
-    <Box sx={{width: '100%', display: 'flex', justifyContent: 'space-evenly', mb:2}}>
-      <Button type="submit"
-              variant="contained" sx={{backgroundColor: '#DCDCDD', color:'#000'}}>Compétence</Button>    
-      <Button type="submit"
-              variant="contained" sx={{backgroundColor: '#DCDCDD', color:'#000'}}>Titre</Button>    
-      <Button type="submit"
-              variant="contained" sx={{backgroundColor: '#DCDCDD', color:'#000'}}>Nom d'entreprise</Button>    
-    </Box>
     {mapCards()}
     </div>
 

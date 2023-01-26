@@ -12,14 +12,14 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import Logo from '../../public/logo.png';
+import Logo from '../../public/LogoBlanc.png';
 import { storeIslogged, changeLog } from './Redux/Store';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router'
 
 function ResponsiveAppBar() {
   const router = useRouter()
-  const pages = ['Mon profil', 'Mes favoris', 'Historique de projet', 'Liste des projets', 'Premium'];
+  const pages = ['Les projets'];
   let settings = ['Profile', 'Se déconnecter'];
   const logInfo = useSelector(storeIslogged);
   if (logInfo === false)
@@ -37,20 +37,8 @@ function ResponsiveAppBar() {
   const handleCloseNavMenu = (page) => {
     console.log("dsfqsfsd", page)
     setAnchorElNav(null);
-    if (page === "Mon profil") {
-      router.push('/profile')
-    }
-    if (page === "Mes favoris") {
-      router.push('/')
-    }
-    if (page === "Historiques de projets") {
-      router.push('/')
-    }
-    if (page === "Liste des projets") {
+    if (page === "Les projets") {
       router.push('/projects')
-    }
-    if (page === "Premium") {
-      router.push('/')
     }
   };
 
@@ -68,7 +56,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar  position="static" style={{backgroundColor: "#FFFFFF"}}>
+    <AppBar  position="static" style={{backgroundColor: "#274c77"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{width: "50px", height: "50px", cursor: "pointer"}} onClick={() =>router.push('/')}>
@@ -82,7 +70,7 @@ function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="#274c77"
+              color="inherit"
             >
               <MenuIcon />
             </IconButton>

@@ -35,31 +35,20 @@ export default function SignUp() {
     });
   };
 
-  
-
   const radios = () => {
     return (
       <FormControl>
       <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
       <RadioGroup sx={{display: 'flex', flexDirection: 'row'}}
         aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="Recruteur"
+        defaultValue="female"
         name="radio-buttons-group"
       >
         <FormControlLabel onClick={() => setStatus("Recruteur")} value="Recruteur" defaultChecked={true} control={<Radio />} label="Recruteur" />
-        <FormControlLabel onClick={() => setStatus("Candidat")} value="Candidat" control={<Radio />} label="Candidat" />
+        <FormControlLabel onClick={() => setStatus("Candidat")} value="male" control={<Radio />} label="Candidat" />
       </RadioGroup>
     </FormControl>
     )
-  }
-
-  const handleclick = () => {
-    if(status === "Recruteur"){
-      router.push('/projects')
-    }
-    else{
-      router.push('/demands')
-    }
   }
 
   const handleStatus = () => {
@@ -84,7 +73,7 @@ export default function SignUp() {
               required
               fullWidth
               id="firstName"
-              label="Adresse de la société"
+              label="Addresse de la société"
               autoFocus
             />
           </Grid>
@@ -110,41 +99,6 @@ export default function SignUp() {
               autoFocus
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              autoComplete="given-name"
-              name="firstName"
-              required
-              fullWidth
-              id="firstName"
-              label="SIRET"
-              autoFocus
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <TextField
-              autoComplete="given-name"
-              name="firstName"
-              fullWidth
-              id="firstName"
-              label="Lien société (facultatif)"
-              autoFocus
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              autoComplete="given-name"
-              name="firstName"
-              required
-              fullWidth
-              id="firstName"
-              label="Ma recherche"
-              autoFocus
-              multiline
-              rows={5}
-            />
-          </Grid>
         </Grid>
       )
     }
@@ -153,21 +107,21 @@ export default function SignUp() {
         <Grid item xs={12} sm={6}>
           <TextField
             autoComplete="given-name"
-            name="adresse"
+            name="addresse"
             required
             fullWidth
-            id="adresse"
-            label="Adresse"
+            id="addresse"
+            label="addresse"
             autoFocus
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
             autoComplete="given-name"
-            name="adresse"
+            name="addresse"
             required
             fullWidth
-            id="adresse"
+            id="addresse"
             label="Numéro de téléphone"
             autoFocus
           />
@@ -188,8 +142,8 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h3" color="#274C77" >
-            Inscription
+          <Typography component="h1" variant="h5">
+            S'inscrire
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -219,7 +173,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
-                  label="Adresse Email"
+                  label="Addresse Email"
                   name="email"
                   autoComplete="email"
                 />
@@ -235,41 +189,24 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
-
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Confirmer mot de passe"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
             </Grid>
             {radios()}
             {handleStatus()}
-            <Grid container direction="column" justifyContent="center" alignItems="center" textAlign="center">
-              <Grid item >
-                <Typography component="p" variant="body2" sx={{ mt: 3, mb: 2,p:2}} >En cliquant sur S’inscrire, vous acceptez nos Conditions générales. Découvrez comment nous recueillons, utilisons et partageons vos données en lisant notre Politique de confidentialité et comment nous utilisons les cookies et autres technologies similaires en consultant notre Politique d’utilisation des cookies. Vous recevrez peut-être des notifications par texto de notre part et vous pouvez à tout moment vous désabonner.</Typography>
-              </Grid>
-            </Grid> 
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2,p:2, backgroundColor: "#274c77" }}
-              onClick={handleclick}>
-              Valider
+              sx={{ mt: 3, mb: 2, backgroundColor: "#274c77" }}
+            >
+              S'inscrire
             </Button>
-            {/* <Grid container direction="column" justifyContent="center" alignItems="center">
+            <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="#" variant="body2" onClick={() => router.push('/login')}>
                   Vous avez deja un compte ? Se connecter
                 </Link>
               </Grid>
-            </Grid> */}
+            </Grid>
           </Box>
         </Box>
       </Container>

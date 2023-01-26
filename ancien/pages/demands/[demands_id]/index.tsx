@@ -66,11 +66,10 @@ export default function SignInSide() {
                 component="img"
                 sx={{ width: 50, height: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                 image={hands.src}
-                alt="hand"
+                alt="Live from space album cover"
               />
-              
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1, justifyContent:"end" }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
                   <IconButton aria-label="previous">
                   <DeleteIcon color='error' onClick={()=> setOpen(true)}/>
                   </IconButton> 
@@ -112,44 +111,19 @@ export default function SignInSide() {
             }}
           >
             <img style={{width: "100px", height: "100px"}} src={hands.src}/>
-            <Typography sx={{ margin: "20px" }} variant="h5" color="#274c77" component="div">
-                  {recruiter.societyName}
-                  </Typography>
-            <Box sx={{backgroundColor: "whitesmoke", width: "100%", height: "300px", padding: "20px", borderRadius: "20px"}}>
-            <Typography sx={{ margin: "20px" }}>
-              <span style={{color: "#274c77"}}>Nom du recruteur : </span> {recruiter.recruiterName}
+            <Box sx={{backgroundColor: "whitesmoke", width: "100%", height: "400px", padding: "20px", borderRadius: "20px"}}>
+            <Typography >
+              Nom du recruteur : {recruiter.recruiterName}
             </Typography>
-            <Typography sx={{ margin: "20px" }}>
-            <span style={{color: "#274c77"}}> Nom de la société : </span> {recruiter.societyName}
+            <Typography >
+              Nom de la société :{recruiter.societyName}
             </Typography>
-            <Typography sx={{ margin: "20px" }}>
-            <span style={{color: "#274c77"}}> Ville : </span> {recruiter.city}
+            <Typography >
+              Ville : {recruiter.city}
             </Typography>
-            <Typography sx={{ml:"20px" }}>
-            <span style={{color: "#274c77"}}> Description du projet </span>
-            </Typography>
-            <Typography sx={{ml:"20px", mb: "20px", mt:"5px" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing el lorem ipsum dolor sit amet, consectetur
-            </Typography>
-            <Link sx={{ margin: "20px" }}>
+            <Typography >
               Lien : {recruiter.link}
-            </Link>
-            </Box>
-            <Box sx={{ display: 'flex', pl: 1, pb: 1, m:2 }}>
-            <Button
-              type="submit" 
-              variant="contained"
-              sx={{ m:2,p:2, backgroundColor: "#274c77" }}
-              >
-              Accepter
-            </Button>
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{ m: 2,p:2, backgroundColor: "red" }}
-              >
-              refuser
-            </Button>
+            </Typography>
             </Box>
           </Box>
         </Grid>

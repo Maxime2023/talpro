@@ -42,6 +42,7 @@ const style = {
     borderRadius: '20px',
     boxShadow: 24,
     p: 4,
+    textAlign: 'center',
   };
 
 export default function SignInSide() {
@@ -66,10 +67,10 @@ export default function SignInSide() {
                 component="img"
                 sx={{ width: 50, height: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                 image={hands.src}
-                alt="Live from space album cover"
+                alt="hand"
               />
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+              <Box sx={{ display: 'flex', pl: 1, pb: 1 , justifyContent:"end"}}>
                   <IconButton aria-label="previous">
                   <DeleteIcon color='error' onClick={()=> setOpen(true)}/>
                   </IconButton> 
@@ -78,11 +79,11 @@ export default function SignInSide() {
                   </IconButton>
                 </Box>
                 <CardContent sx={{ flex: '1 0 auto' }} onClick={() => selectRecruiter(x)}>
+                <Typography variant="subtitle1" color="text.secondary" component="div">
+                  {x.societyName}
+                  </Typography>
                   <Typography component="div">
                     {x.message}
-                  </Typography>
-                  <Typography variant="subtitle1" color="text.secondary" component="div">
-                  {x.societyName}
                   </Typography>
                 </CardContent>
               </Box>
@@ -99,7 +100,7 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={theme}>
-              <Modal
+      <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"

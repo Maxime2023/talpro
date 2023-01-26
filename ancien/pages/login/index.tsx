@@ -29,7 +29,7 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh'}}>
+      <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
           item
@@ -37,6 +37,8 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
+            backgroundImage: 'url(https://wallpaperaccess.com/full/2053052.jpg)',
+            backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
@@ -53,18 +55,16 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
-            <Typography component="h1" variant="h3" color="#274C77" >
-              Connexion
+            <Typography component="h1" variant="h5">
+              Se connecter
             </Typography>
-
-            <Typography component="p"> Lorem ipsum dolor sit amet, consectetur adipiscing</Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 id="email"
-                label="Adresse Email"
+                label="Addresse Email"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -79,26 +79,23 @@ export default function SignInSide() {
                 id="password"
                 autoComplete="current-password"
               />
-              <Grid item xs style={{textAlign:"right"}}>
-                  <Link href="#" variant="body2" >
-                    Mot de passe oublié?
-                  </Link>
-                </Grid>
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, p:2, backgroundColor: '#274c77' }}
+                sx={{ mt: 3, mb: 2, backgroundColor: '#274c77' }}
               >
                 Se connecter
               </Button>
-              <Grid container direction="column" justifyContent="center" alignItems="center">
-                
-                
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Mot de passe oublié?
+                  </Link>
+                </Grid>
                 <Grid item>
-                Vous n'avez pas encore de compte ?   
-                  <Link href="#" variant="body" onClick={() => router.push('register')}>
-                    {"Inscrivez vous"}
+                  <Link href="#" variant="body2" onClick={() => router.push('register')}>
+                    {"Vous n'avez pas encore de compte ? Inscrivez vous"}
                   </Link>
                 </Grid>
               </Grid>

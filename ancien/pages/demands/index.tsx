@@ -22,10 +22,10 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useRouter } from 'next/router'
 import DoneAllIcon from '@mui/icons-material/DoneAll';
-import { demandsFake } from '../../components/data';
-import hands from '../../../public/hands.png'
+import { demandsFake } from '../components/data';
+import hands from '../../public/hands.png'
 import Modal from '@mui/material/Modal';
-import { storeRecruiter, changeRecruiter } from '../../components/Redux/Store';
+import { storeRecruiter, changeRecruiter } from '../components/Redux/Store';
 import { useSelector, useDispatch } from 'react-redux';
 
 const theme = createTheme();
@@ -46,7 +46,6 @@ const style = {
 
 export default function SignInSide() {
     const dispatch = useDispatch()
-    const recruiter = useSelector(storeRecruiter)
   const router = useRouter()
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -54,6 +53,7 @@ export default function SignInSide() {
   const[demands, setDemands] = React.useState(demandsFake)
 
   const selectRecruiter = (x) => {
+    console.log("sdfqsdfsd", x)
     dispatch(changeRecruiter(x))
     router.push(`/demands/${x.id}`)
   }
@@ -66,11 +66,10 @@ export default function SignInSide() {
                 component="img"
                 sx={{ width: 50, height: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                 image={hands.src}
-                alt="hand"
+                alt="Live from space album cover"
               />
-              
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1, justifyContent:"end" }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
                   <IconButton aria-label="previous">
                   <DeleteIcon color='error' onClick={()=> setOpen(true)}/>
                   </IconButton> 
@@ -100,6 +99,22 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={theme}>
+              <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Information
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Etes vous sur de votre choix ?
+          </Typography>
+          <Button variant="contained" style={{backgroundColor: '#274c77', marginTop: '30px'}}>Suivant</Button>
+        </Box>
+      </Modal>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
@@ -111,46 +126,10 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
-            <img style={{width: "100px", height: "100px"}} src={hands.src}/>
-            <Typography sx={{ margin: "20px" }} variant="h5" color="#274c77" component="div">
-                  {recruiter.societyName}
-                  </Typography>
-            <Box sx={{backgroundColor: "whitesmoke", width: "100%", height: "300px", padding: "20px", borderRadius: "20px"}}>
-            <Typography sx={{ margin: "20px" }}>
-              <span style={{color: "#274c77"}}>Nom du recruteur : </span> {recruiter.recruiterName}
+            <Typography component="h1" variant="h5">
+              Liste des demandes
             </Typography>
-            <Typography sx={{ margin: "20px" }}>
-            <span style={{color: "#274c77"}}> Nom de la société : </span> {recruiter.societyName}
-            </Typography>
-            <Typography sx={{ margin: "20px" }}>
-            <span style={{color: "#274c77"}}> Ville : </span> {recruiter.city}
-            </Typography>
-            <Typography sx={{ml:"20px" }}>
-            <span style={{color: "#274c77"}}> Description du projet </span>
-            </Typography>
-            <Typography sx={{ml:"20px", mb: "20px", mt:"5px" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing el lorem ipsum dolor sit amet, consectetur
-            </Typography>
-            <Link sx={{ margin: "20px" }}>
-              Lien : {recruiter.link}
-            </Link>
-            </Box>
-            <Box sx={{ display: 'flex', pl: 1, pb: 1, m:2 }}>
-            <Button
-              type="submit" 
-              variant="contained"
-              sx={{ m:2,p:2, backgroundColor: "#274c77" }}
-              >
-              Accepter
-            </Button>
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{ m: 2,p:2, backgroundColor: "red" }}
-              >
-              refuser
-            </Button>
-            </Box>
+            {mapDemands()}
           </Box>
         </Grid>
       </Grid>
